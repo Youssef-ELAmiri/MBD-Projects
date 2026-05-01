@@ -10,4 +10,4 @@ L'ingénierie moderne exige de valider les concepts virtuellement avant toute im
 - Le déploiement sur microcontrôleurs (Arduino, ESP32, Raspberry Pi).
 
 ---
-**Propriétaire :** [Youssef El-Amiri]
+**Propriétaire :** Youssef El-Amiri
