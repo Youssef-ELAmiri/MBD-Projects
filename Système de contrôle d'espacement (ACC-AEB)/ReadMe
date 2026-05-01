@@ -1,0 +1,30 @@
+# Adaptive Cruise Control (ACC) & Automated Emergency Braking (AEB) - Système ADAS
+
+Ce projet implémente un système de régulation de vitesse adaptative (ACC) capable de gérer dynamiquement la distance de sécurité entre un véhicule ego et un véhicule cible dans un environnement 3D réaliste.
+
+## 🛠️ Architecture Technique
+Le système suit une architecture modulaire pour séparer l'intelligence du contrôleur de la simulation physique.
+
+### Composants Principaux :
+- **Perception** : Utilisation d'un capteur **Simulation 3D Probabilistic Radar** configuré avec un champ de vision de 40° et une portée de 100m.
+- **Contrôleur (ECU)** : Logique décisionnelle développée sous **Stateflow**, gérant les états de croisière, de suivi de distance et de freinage d'urgence.
+- **Fonctions de Calcul** : Scripts MATLAB optimisés pour le calcul des distances de sécurité et des intensités de freinage/accélération.
+
+## 💻 Simulation & Validation
+Le projet exploite la puissance de la co-simulation pour garantir la sécurité de l'algorithme :
+- **Environnement 3D** : Scène Unreal Engine simulant une autoroute avec détection radar en temps réel.
+- **Tests SIL (Software-in-the-Loop)** : Vérification de l'équivalence entre le modèle Simulink et le code C généré.
+- **Tests PIL (Processor-in-the-Loop)** : Déploiement d'un sous-système S-Function sur une cible **Arduino Nano 3.0** pour valider l'exécution sur le processeur réel.
+
+## ⚙️ Optimisation Embarquée
+Pour respecter les contraintes matérielles de l'Arduino/ESP32, une attention particulière a été portée à :
+- La conversion systématique des données en **Single Precision** (`real32_T`) pour exploiter les unités de calcul flottant matérielles et réduire la latence.
+- L'isolation de la logique de contrôle pour une génération de code sans dépendances graphiques.
+
+## 📂 Contenu du Projet
+- `Models/` : Modèles Simulink (.slx) et diagrammes Stateflow.
+- `Functions/` : Algorithmes de contrôle MATLAB.
+- `Docs/` : Rapport de projet complet et captures de simulation.
+
+---
+*Projet réalisé dans le cadre de ma formation en Ingénierie des Systèmes Embarqués.*
